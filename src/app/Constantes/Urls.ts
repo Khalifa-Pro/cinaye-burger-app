@@ -9,5 +9,10 @@ export class Urls{
     static ARCHIVER_BURGERS = Urls.BASE_URL + "/archiver/";
     static DESARCHIVER_BURGERS = Urls.BASE_URL + "/desarchiver/";
     static MODIFIER_BURGERS = Urls.BASE_URL + "/update/";
+    static RECETTES_JOURNALIERS = Urls.BASE_URL + "/recettes-journalieres";
+    static DETAILS_BURGERS = Urls.BASE_URL + "/show/";
+
+    // COMMANDES APIs
+    static COMMANDER_BURGERS = Urls.BASE_URL + "/commander/";
 
 }

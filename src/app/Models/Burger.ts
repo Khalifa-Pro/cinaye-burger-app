@@ -1,6 +1,10 @@
 export class Burger{
-    nom: String;
-    prix: Number;
-    image: String;
-    description: String
+    id: number;
+    nom: string;
+    prix: string;
+    image: string;
+    description: string;
+    archiver: number;
+    created_at: string;
+    updated_at: string;
 }

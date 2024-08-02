@@ -1,6 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import { DetailsComponent } from '../../Burger/details/details.component';
 import { FooterComponent } from '../footer/footer.component';
 import { MenuBurgerComponent } from '../../Menu/menu-burger/menu-burger.component';
 
@@ -9,7 +8,6 @@ import { MenuBurgerComponent } from '../../Menu/menu-burger/menu-burger.componen
   standalone: true,
   imports: [
     NgOptimizedImage,
-    DetailsComponent,
     FooterComponent,
     MenuBurgerComponent
   ],
