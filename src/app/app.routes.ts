@@ -11,11 +11,13 @@ import { CommandesValideesComponent } from './Commande/commandes-validees/comman
 import { CommandesAnnuleesComponent } from './Commande/commandes-annulees/commandes-annulees.component';
 import { ListePaiementsComponent } from './Paiement/liste-paiements/liste-paiements.component';
 import { PayerComponent } from './Paiement/payer/payer.component';
+import { ContentComponent } from './Layouts/content/content.component';
 
 export const routes: Routes = [
     /***
      * ROUTES BURGERS
      */
+    { path: 'cinaye-burger', component: ContentComponent },
     { path: 'liste-burgers', component: ListeBurgersComponent },
     { path: 'creer-burgers', component: CreerBurgersComponent },
     { path: 'modifier-burgers/{id}', component: ModifierBurgersComponent },

@@ -2,6 +2,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { MenuBurgerComponent } from '../../Menu/menu-burger/menu-burger.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-content',
@@ -9,7 +10,8 @@ import { MenuBurgerComponent } from '../../Menu/menu-burger/menu-burger.componen
   imports: [
     NgOptimizedImage,
     FooterComponent,
-    MenuBurgerComponent
+    MenuBurgerComponent,
+    NavbarComponent
   ],
   templateUrl: './content.component.html',
   styleUrl: './content.component.css'

@@ -10,9 +10,18 @@ export class Urls{
     static DESARCHIVER_BURGERS = Urls.BASE_URL + "/desarchiver/";
     static MODIFIER_BURGERS = Urls.BASE_URL + "/update/";
     static RECETTES_JOURNALIERS = Urls.BASE_URL + "/recettes-journalieres";
-    static DETAILS_BURGERS = Urls.BASE_URL + "/show/";
+    //static DETAILS_BURGERS = Urls.BASE_URL + "/show/";
 
     // COMMANDES APIs
     static COMMANDER_BURGERS = Urls.BASE_URL + "/commander/";
+    static LISTE_COMMANDES = Urls.BASE_URL + "/commandes";
+    static VALIDER_COMMANDE = Urls.BASE_URL + "/valider/";
+    static COMMANDER_EN_COURS = Urls.BASE_URL + "/commandes-en-cours";
+    static COMMANDER_VALIDEES = Urls.BASE_URL + "/commandes-validees";
+    static COMMANDER_ANNULEES = Urls.BASE_URL + "/commandes-annulees";
+
+    // PAIEMENT APIs
+    static PAYER_COMMANDE = Urls.BASE_URL + "/payer/";
+
 
 }

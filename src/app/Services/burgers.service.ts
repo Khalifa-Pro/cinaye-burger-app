@@ -23,9 +23,9 @@ export class BurgersService {
    * details
    * $id   
    * */
-  details(id: string): Observable<Burger> {
-    return this.http.get<Burger>(`${Urls.DETAILS_BURGERS}/${id}`);
-  }
+  // details(id: string): Observable<Burger> {
+  //   return this.http.get<Burger>(`${Urls.DETAILS_BURGERS}/${id}`);
+  // }
 
   /**
    * Rcettes Journalieres
