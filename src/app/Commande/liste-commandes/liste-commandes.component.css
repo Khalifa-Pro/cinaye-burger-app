@@ -8221,8 +8221,8 @@
     -o-transition: all 0.3s;
     transition: all 0.3s; }
     #sidebar.active {
-      min-width: 180px;
-      max-width: 180px;
+      min-width: 250px;
+      max-width: 250px;
       text-align: center; }
       #sidebar.active ul.components li {
         font-size: 14px; }

@@ -5,53 +5,57 @@
 		
 <div class="wrapper d-flex align-items-stretch">
 	<nav id="sidebar" class="active">
-        <h1><a href="" class="logo">CB.</a></h1>
-        <ul class="list-unstyled components mb-5">
-          <li class="active">
-            <a routerLink='/liste-burgers'><span class="fa fa-cutlery" aria-hidden="true"></span><strong>BURGERS</strong></a>
-          </li>
-          <br>
-          <li class="active">
-            <a routerLink="/liste-commandes"><span class="fa fa-shopping-basket" aria-hidden="true"></span><strong>COMMANDES</strong></a>
-          </li>
-          <br>
-          <li class="active">
-            <a routerLink="/liste-paiements"><span class="fa fa-credit-card" aria-hidden="true"></span><strong>PAIEMENTS</strong></a>
-          </li>
-          <br>
-          <li class="active">
-            <a routerLink="/liste-livraison"><span class="fa fa-motorcycle" aria-hidden="true"></span><strong>LIVRAISONS</strong></a>
-          </li>
-          <br>
-          <li class="active">
-            <a routerLink="/statistiques"><span class="fa fa-bar-chart" aria-hidden="true"></span><strong>STATISTIQUES</strong></a>
-          </li>
-          <br>
-          <li class="active">
-            <a routerLink="/bilan"><span class="fa fa-balance-scale" aria-hidden="true"></span><strong>BILAN JOURNALIER</strong></a>
-          </li>
-        </ul>
+    <h1><a href="" class="logo">CB.</a></h1>
+    <ul class="list-unstyled components mb-5">
+      <li class="active">
+        <a routerLink='/liste-burgers'>
+          <img src="../../../assets/iconBurger-removebg-preview.png" width="40" height="30" alt="">
+          <strong class="ml-2">BURGERS</strong>
+        </a>
+      </li>
+      <br>
+      <li class="active">
+        <a routerLink="/liste-commandes">
+          <img src="../../../assets/iconCommande-removebg-preview.png" width="40" height="30" alt="">
+          <strong class="ml-2">COMMANDES</strong></a>
+      </li>
+      <br>
+      <li class="active">
+        <a routerLink="/liste-paiements">
+          <img src="../../../assets/iconPaiement-removebg-preview.png" width="40" height="30" alt="">
+          <strong class="ml-2">PAIEMENTS</strong></a>
+      </li>
+      <br>
+      <li class="active">
+        <a routerLink="/liste-livraison">
+          <img style="background-color: white; border-radius: 75px;" src="../../../assets/iconLivraison-removebg-preview.png" width="80" height="50" alt="">
+          <strong class="ml-2">LIVRAISONS</strong></a>
+      </li>
+      <br>
+      <li class="active">
+        <a routerLink="/statistiques">
+          <img src="../../../assets/iconStatistic-removebg-preview.png" width="40" height="30" alt="">
+          <strong class="ml-2">STATISTIQUES</strong></a>
+      </li>
+      <br>
+      <li class="active">
+        <a routerLink="/bilan">
+          <img src="../../../assets/iconBilan-removebg-preview.png" width="50" height="40" alt="">
+          <strong class="ml-2">BILAN JOURNALIER</strong></a>
+      </li>
+    </ul>
 
-        <div class="footer">
-        	<p>
-				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-			</p>
-        </div>
-    </nav>
-
+    <div class="footer">
+      <p>
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+  </p>
+    </div>
+</nav>
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-
-                <button type="button" id="sidebarCollapse" class="btn btn-danger">
-                <i class="fa fa-bars"></i>
-                <span class="sr-only">Toggle Menu</span>
-                </button>
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
                 <a class="navbar-brand ml-5" href="#"><h3 style="color: rgb(255, 0, 0); font-family: 'Bodoni MT Black';"><strong>*** CINAYE_BURGER ***</strong></h3></a>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -79,7 +83,14 @@
             </div>
             </nav>
             <div class="container">
-               <h1>BILAN</h1>
+               <h1>BILAN JOURNALIER</h1>
+               <div class="container">
+                <div class="row" style="background-color: red;">
+                  <strong>
+                    {{montant_total}} FCFA
+                  </strong>
+                </div>
+               </div>
             </div>
     </div>
 </div>

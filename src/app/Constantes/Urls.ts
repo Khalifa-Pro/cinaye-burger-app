@@ -23,6 +23,8 @@ export class Urls{
 
     // PAIEMENT APIs
     static PAYER_COMMANDE = Urls.BASE_URL + "/payer/";
+    static LISTE_PAIMENTS = Urls.BASE_URL + "/paiements/";
+    static BILAN_JOUNALIER = Urls.BASE_URL + "/bilan-journalier";
 
 
 }

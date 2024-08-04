@@ -35,8 +35,6 @@ export const routes: Routes = [
      */
     { path: 'liste-commandes', component: ListeCommandesComponent },
     { path: 'creer-commande', component: PasserCommandesComponent },
-    { path: 'valider-commande', component: ValiderCommandeComponent },
-    { path: 'annuler-commande', component: AnnulerCommandeComponent },
     { path: 'commandes-en-cours', component: CommandesEnCoursComponent },
     { path: 'commandes-validees', component: CommandesValideesComponent },
     { path: 'commandes-annulees', component: CommandesAnnuleesComponent },

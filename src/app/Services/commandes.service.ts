@@ -28,6 +28,27 @@ export class CommandesService {
     return this.http.get<Array<LigneCommande>>(Urls.LISTE_COMMANDES);
   }
 
+  /***
+   * liste des commandes en cours
+   */
+  public commandesEnCours(){
+    return this.http.get<Array<LigneCommande>>(Urls.COMMANDER_EN_COURS);
+  }
+
+  /***
+   * liste des commandes annulees
+   */
+  public commandesAnnulees(){
+    return this.http.get<Array<LigneCommande>>(Urls.COMMANDER_ANNULEES);
+  }
+
+  /***
+   * liste des commandes validees
+   */
+  public commandesValidees(){
+    return this.http.get<Array<LigneCommande>>(Urls.COMMANDER_VALIDEES);
+  }
+
   /**
    * valider commande
    *id: number   
