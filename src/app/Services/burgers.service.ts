@@ -16,7 +16,7 @@ export class BurgersService {
    * listeBurgers
    */
   public liste() {
-    return this.http.get(Urls.LISTE_BURGERS);
+    return this.http.get<Array<Burger>>(Urls.LISTE_BURGERS);
   }
 
   /**
@@ -38,16 +38,19 @@ export class BurgersService {
    * ajouterBurger
    * burger: Burger
    */
-  public ajouter(buger: Burger) {
-    return this.http.post(Urls.AJOUTER_BURGERS,buger);
+  public ajouter(buger: FormData): Observable<any> {
+    return this.http.post<Burger>(Urls.AJOUTER_BURGERS,buger);
   }
 
   /**
    * archiver
    * id:Number   
    * */
-  public archiver(id:Number) {
-    return this.http.post(Urls.ARCHIVER_BURGERS,id);
+  public archiver(id:number) {
+    // Concaténer l'ID à l'URL de base
+    const url = `${Urls.ARCHIVER_BURGERS}${id}`;
+    // Envoyer une requête POST avec un corps vide
+    return this.http.post(url, {});
   }
 
   /**

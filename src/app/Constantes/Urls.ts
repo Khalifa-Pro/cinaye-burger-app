@@ -16,6 +16,7 @@ export class Urls{
     static COMMANDER_BURGERS = Urls.BASE_URL + "/commander/";
     static LISTE_COMMANDES = Urls.BASE_URL + "/commandes";
     static VALIDER_COMMANDE = Urls.BASE_URL + "/valider/";
+    static ANNULER_COMMANDE = Urls.BASE_URL + "/annuler/";
     static COMMANDER_EN_COURS = Urls.BASE_URL + "/commandes-en-cours";
     static COMMANDER_VALIDEES = Urls.BASE_URL + "/commandes-validees";
     static COMMANDER_ANNULEES = Urls.BASE_URL + "/commandes-annulees";

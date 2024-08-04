@@ -1,1 +1,28 @@
-<app-sidebar></app-sidebar>
+<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Information Burger</h2>
+                    <form [formGroup]="fg" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                        <div class="input-group">
+                            <input class="input--style-2" type="text" placeholder="Nom du Burger" formControlName="nom">
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-2" type="text" placeholder="Prix du Burger" formControlName="prix">
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-2" type="file" formControlName="image" #imageInput>
+                        </div>
+                        <div class="input-group">
+                            <textarea class="form-control input--style-2" placeholder="Description du burger" formControlName="description" rows="4"></textarea>
+                          </div>
+                          
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>

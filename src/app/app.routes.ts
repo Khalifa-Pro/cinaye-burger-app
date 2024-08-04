@@ -12,8 +12,16 @@ import { CommandesAnnuleesComponent } from './Commande/commandes-annulees/comman
 import { ListePaiementsComponent } from './Paiement/liste-paiements/liste-paiements.component';
 import { PayerComponent } from './Paiement/payer/payer.component';
 import { ContentComponent } from './Layouts/content/content.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
+import { BilanJournalierComponent } from './bilan-journalier/bilan-journalier.component';
+import { LivraisonComponent } from './livraison/livraison.component';
 
 export const routes: Routes = [
+
+    /***
+     * ENTREE ADMIN ROUTE
+     */
+    { path: 'admin', component: ListeBurgersComponent },
     /***
      * ROUTES BURGERS
      */
@@ -37,7 +45,14 @@ export const routes: Routes = [
      * ROUTES PAIEMENTS
      */
     { path: 'liste-paiements', component: ListePaiementsComponent },
-    { path: 'payer-commande', component:  PayerComponent}
+    { path: 'payer-commande', component:  PayerComponent},
+
+     /***
+     * ROUTES STATISTIQUES
+     */
+     { path: 'liste-livraison', component: LivraisonComponent },
+     { path: 'statistiques', component: StatistiqueComponent },
+     { path: 'bilan', component:  BilanJournalierComponent}
 
     
 ];

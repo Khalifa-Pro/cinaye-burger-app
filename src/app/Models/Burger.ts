@@ -1,10 +1,10 @@
-export class Burger{
-    id: number;
-    nom: string;
-    prix: string;
-    image: string;
-    description: string;
-    archiver: number;
-    created_at: string;
-    updated_at: string;
+export interface Burger {
+    id?: number;
+    nom?: string;
+    prix?: number;
+    image?: File;
+    description?: string;
+    archiver?: boolean;
+    created_at?: Date;
+    updated_at?: Date;
 }

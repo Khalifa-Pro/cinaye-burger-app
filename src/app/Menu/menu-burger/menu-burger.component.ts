@@ -4,9 +4,9 @@ import { BurgersService } from '../../Services/burgers.service';
 import { CommandesService } from '../../Services/commandes.service';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Commande } from '../../Models/Commande'; // Assurez-vous que le chemin est correct
 import { exit } from 'process';
 import { Router } from '@angular/router';
+import { LigneCommande } from '../../Models/LigneCommande';
 
 @Component({
   selector: 'app-menu-burger',
@@ -58,7 +58,7 @@ export class MenuBurgerComponent implements OnInit {
       return;
     }
 
-    const commande: Commande = {
+    const commande: LigneCommande = {
       nom: this.form.value.nom,
       prenom: this.form.value.prenom,
       telephone: this.form.value.telephone,
