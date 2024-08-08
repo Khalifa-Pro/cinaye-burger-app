@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LigneCommande } from '../../Models/LigneCommande';
 import { CommandesService } from '../../Services/commandes.service';
 import { error } from 'console';
+import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
+import { AuthService } from '../../Auth/auth.service';
 
 @Component({
   selector: 'app-liste-commandes',
@@ -16,15 +19,48 @@ import { error } from 'console';
   styleUrl: './liste-commandes.component.css'
 })
 export class ListeCommandesComponent {
+
   commandes: Array<LigneCommande>;
+  isPayed :number = 0;
 
   constructor(
-    private serviceCommande: CommandesService
+    private serviceCommande: CommandesService,
+    private toast: ToastrService,
+    private authService: AuthService,
+    private router: Router
   ) { }
   
+  public logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 
   ngOnInit(): void {
     this.listeCommandes();
+  }
+
+  showSuccessPayer()
+  {
+    this.toast.success(
+      "Paiement réussi!", "Succès", {
+          positionClass : "toast-top-right",
+    });
+  }
+
+  showSuccessValider()
+  {
+    this.toast.success(
+      "Validation réussie!", "Succès", {
+          positionClass : "toast-top-right",
+    });
+  }
+
+  showSuccessAnnuler()
+  {
+    this.toast.error(
+      "Annulation réussie!", "Succès", {
+          positionClass : "toast-top-right",
+    });
   }
 
   /***
@@ -47,6 +83,9 @@ export class ListeCommandesComponent {
     .subscribe({
       next: (data)=>{
         console.log("Validée!");
+        window.scrollTo(0,0);
+        this.showSuccessValider();
+        this.listeCommandes();
         
       },
       error: (error)=>{
@@ -59,13 +98,92 @@ export class ListeCommandesComponent {
     this.serviceCommande.annuler(id)
     .subscribe({
       next: (data)=>{
-        console.log("Validée!");
+        console.log("Annulee!");
+        window.scrollTo(0,0);
+        this.showSuccessAnnuler();
+        this.listeCommandes();
         
       },
       error: (error)=>{
         
       }
     })
+  }
+
+  payer(id:number, montant:number){
+    this.serviceCommande.payer(id,montant)
+    .subscribe({
+      next: (data)=>{
+        console.log("Payer!");
+        this.isPayed = 1;
+        window.scrollTo(0,0);
+        this.showSuccessPayer();
+        this.listeCommandes();
+        
+      },
+      error: (error)=>{
+        
+      }
+    })
+  }
+
+  archiver(id:number){
+    this.serviceCommande.archiver(id)
+    .subscribe({
+      next: (data)=>{
+        console.log("Archivé!");
+        this.isPayed = 1;
+        window.scrollTo(0,0);
+        this.showSuccessPayer();
+        this.listeCommandes();
+        
+      },
+      error: (error)=>{
+        
+      }
+    })
+  }
+
+  confirmBox(id: number) {
+    Swal.fire({
+      title: 'Êtes-vous sûr de vouloir annuler?',
+      text: "Vous ne pourrez pas restaurer cette action.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, annuler',
+      cancelButtonText: 'Non, conserver'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.annuler(id);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Conservé',
+          'Votre commande est en sécurité :)',
+          'error'
+        );
+      }
+    });
+  }
+
+  confirmBoxArchive(id: number) {
+    Swal.fire({
+      title: 'Êtes-vous sûr de vouloir supprimer?',
+      text: "Vous ne pourrez pas restaurer cette action.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, supprimer',
+      cancelButtonText: 'Non, annuler'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.archiver(id);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Annulé',
+          'Votre commande est en sécurité :)',
+          'error'
+        );
+      }
+    });
   }
 
 }

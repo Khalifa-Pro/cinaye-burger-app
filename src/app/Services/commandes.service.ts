@@ -49,6 +49,38 @@ export class CommandesService {
     return this.http.get<Array<LigneCommande>>(Urls.COMMANDER_VALIDEES);
   }
 
+  /***
+   * nombre des commandes en cours
+   */
+  public nombreCommandesEnCours(){
+    return this.http.get<any>(Urls.NOMBRE_COMMANDES_EN_COURS);
+  }
+
+  /***
+   * nombre des commandes validees
+   */
+  public nombreCommandesValidees(){
+    return this.http.get<any>(Urls.NOMBRE_COMMANDES_VALIDEES);
+  }
+
+  /***
+   * nombre des commandes annulees
+   */
+  public nombreCommandesAnnulees(){
+    return this.http.get<any>(Urls.NOMBRE_COMMANDES_ANNULEES);
+  }
+
+
+  /***
+   * Archiver commande
+   */
+  public archiver(id: number) {
+    // Concaténer l'ID à l'URL de base
+  const url = `${Urls.ARCHIVER_COMMANDE}${id}`;
+  // Envoyer une requête POST avec un corps vide
+  return this.http.post(url, {});
+}
+
   /**
    * valider commande
    *id: number   
@@ -64,12 +96,19 @@ export class CommandesService {
    * annuler commande
    *id: number   
    */
-   public annuler(id: number) {
-    // Concaténer l'ID à l'URL de base
-  const url = `${Urls.ANNULER_COMMANDE}${id}`;
-  // Envoyer une requête POST avec un corps vide
-  return this.http.post(url, {});
-}
+  public annuler(id: number) {
+      // Concaténer l'ID à l'URL de base
+    const url = `${Urls.ANNULER_COMMANDE}${id}`;
+    // Envoyer une requête POST avec un corps vide
+    return this.http.post(url, {});
+  }
+
+  public payer(id: number, montant: number) {
+      // Concaténer l'ID à l'URL de base
+    const url = `${Urls.PAYER_COMMANDE}${id}/${montant}`;
+    // Envoyer une requête POST avec un corps vide
+    return this.http.post(url, {});
+  }
 
 
 }

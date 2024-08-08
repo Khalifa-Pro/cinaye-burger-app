@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Paiement } from '../../Models/Paiement';
 import { PaiementsService } from '../../Services/paiements.service';
 import { error } from 'console';
+import { AuthService } from '../../Auth/auth.service';
 
 @Component({
   selector: 'app-liste-paiements',
@@ -20,12 +21,19 @@ export class ListePaiementsComponent {
   paiements: Array<Paiement>;
 
   constructor(
-    private servicePaiement: PaiementsService
+    private servicePaiement: PaiementsService,
+    private authService: AuthService,
+    private router: Router
   ) { }
   
 
   ngOnInit(): void {
     this.listePaiements();
+  }
+
+  public logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   /***

@@ -9,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+    underBurger(){
+      window.scrollTo(700,700);
+    }
+
+    underFooter(){
+      window.scrollTo(1500,1500);
+    }
+
 }

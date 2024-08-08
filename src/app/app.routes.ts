@@ -3,9 +3,6 @@ import { ListeBurgersComponent } from './Burger/liste-burgers/liste-burgers.comp
 import { CreerBurgersComponent } from './Burger/creer-burgers/creer-burgers.component';
 import { ModifierBurgersComponent } from './Burger/modifier-burgers/modifier-burgers.component';
 import { ListeCommandesComponent } from './Commande/liste-commandes/liste-commandes.component';
-import { PasserCommandesComponent } from './Commande/passer-commandes/passer-commandes.component';
-import { ValiderCommandeComponent } from './Commande/valider-commande/valider-commande.component';
-import { AnnulerCommandeComponent } from './Commande/annuler-commande/annuler-commande.component';
 import { CommandesEnCoursComponent } from './Commande/commandes-en-cours/commandes-en-cours.component';
 import { CommandesValideesComponent } from './Commande/commandes-validees/commandes-validees.component';
 import { CommandesAnnuleesComponent } from './Commande/commandes-annulees/commandes-annulees.component';
@@ -15,42 +12,50 @@ import { ContentComponent } from './Layouts/content/content.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { BilanJournalierComponent } from './bilan-journalier/bilan-journalier.component';
 import { LivraisonComponent } from './livraison/livraison.component';
+import { LoginComponent } from './Auth/login/login.component';
+import { RegistreComponent } from './Auth/registre/registre.component';
+import { authGuard } from './Auth/auth.guard';
 
 export const routes: Routes = [
 
     /***
-     * ENTREE ADMIN ROUTE
+     * AUTHENTIFICATION ROUTE
      */
-    { path: 'admin', component: ListeBurgersComponent },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegistreComponent },
     /***
-     * ROUTES BURGERS
+     * ROUTES BURGERS CLIENT
      */
     { path: 'cinaye-burger', component: ContentComponent },
-    { path: 'liste-burgers', component: ListeBurgersComponent },
-    { path: 'creer-burgers', component: CreerBurgersComponent },
-    { path: 'modifier-burgers/{id}', component: ModifierBurgersComponent },
+    
+    /***
+     * ROUTES BURGERS GERANT
+     */
+    { path: 'liste-burgers', component: ListeBurgersComponent, canActivate:[authGuard]},
+    { path: 'creer-burgers', component: CreerBurgersComponent, canActivate:[authGuard] },
+    { path: 'modifier-burgers/{id}', component: ModifierBurgersComponent, canActivate:[authGuard] },
 
     /***
      * ROUTES COMMANDES
      */
-    { path: 'liste-commandes', component: ListeCommandesComponent },
-    { path: 'creer-commande', component: PasserCommandesComponent },
-    { path: 'commandes-en-cours', component: CommandesEnCoursComponent },
-    { path: 'commandes-validees', component: CommandesValideesComponent },
-    { path: 'commandes-annulees', component: CommandesAnnuleesComponent },
+    { path: 'liste-commandes', component: ListeCommandesComponent , canActivate:[authGuard]},
+    { path: 'commandes-en-cours', component: CommandesEnCoursComponent, canActivate:[authGuard] },
+    { path: 'commandes-validees', component: CommandesValideesComponent, canActivate:[authGuard] },
+    { path: 'commandes-annulees', component: CommandesAnnuleesComponent, canActivate:[authGuard] },
 
     /***
      * ROUTES PAIEMENTS
      */
-    { path: 'liste-paiements', component: ListePaiementsComponent },
-    { path: 'payer-commande', component:  PayerComponent},
+    { path: 'liste-paiements', component: ListePaiementsComponent, canActivate:[authGuard] },
+    { path: 'payer-commande', component:  PayerComponent, canActivate:[authGuard]},
 
      /***
      * ROUTES STATISTIQUES
      */
-     { path: 'liste-livraison', component: LivraisonComponent },
-     { path: 'statistiques', component: StatistiqueComponent },
-     { path: 'bilan', component:  BilanJournalierComponent}
+     { path: 'liste-livraison', component: LivraisonComponent, canActivate:[authGuard] },
+     { path: 'statistiques', component: StatistiqueComponent, canActivate:[authGuard] },
+     { path: 'bilan', component:  BilanJournalierComponent, canActivate:[authGuard]}
 
     
 ];

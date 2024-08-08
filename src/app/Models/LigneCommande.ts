@@ -10,6 +10,6 @@ export interface LigneCommande {
     created_at?: string;
     updated_at?: string;
     burger_nom?: string;
-    burger_prix?: string;
+    burger_prix?: number;
     burger_image?: string;
 }

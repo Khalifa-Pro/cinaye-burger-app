@@ -1,8 +1,3 @@
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-		
 <div class="wrapper d-flex align-items-stretch">
 	<nav id="sidebar" class="active">
     <h1><a href="" class="logo">CB.</a></h1>
@@ -70,13 +65,13 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
+                      <button class="btn btn-outline-danger" (click)="logout()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
                             <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
                         </svg>
                         Se déconnecter
-                        </a>
+                      </button>
                     </li>
                 </ul>
                 </div>
@@ -102,7 +97,7 @@
                               <th>{{p.created_at}}</th>
                               <td>
                                 <button 
-                                  (click)="payer(p.id); $event.preventDefault();"
+                                  (click)="payer(p.id);"
                                   type="button" 
                                   class="btn btn-danger"
                                   >
@@ -116,5 +111,11 @@
           
               </div>
             </div>
+            <br><br>
+            <div class="container-fluid bg-dark" style="height: 50px; width: 900px;">
+              <p class="copyright-text mt-5 pt-2" style="text-align: center; color: white;">Copyright &copy; 2024 All Rights Reserved by 
+              <a href="#"><strong>Al-Khalifa_DEV</strong></a>.
+              </p>
+          </div>
     </div>
 </div>

@@ -5,6 +5,7 @@ import { BurgersService } from '../../Services/burgers.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-creer-burgers',
@@ -26,7 +27,8 @@ export class CreerBurgersComponent {
   constructor(
     private burgerService: BurgersService,
     private fb: FormBuilder,
-    private route: Router
+    private route: Router,
+    private toast: ToastrService
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,25 @@ export class CreerBurgersComponent {
       prix: ['', [Validators.required]],
       image: [''],
       description: ['']
+    });
+  }
+
+  /***
+   * toast success
+   */
+  showSuccess()
+  {
+    this.toast.success(
+      "Burger bien ajouté!", "Succès", {
+          positionClass : "toast-top-right",
+    });
+  }
+
+  showError()
+  {
+    this.toast.error(
+      "Problème d'ajout", "Erreur", {
+          positionClass : "toast-top-right",
     });
   }
 

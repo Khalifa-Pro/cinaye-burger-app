@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { PaiementsService } from '../Services/paiements.service';
 import { error } from 'console';
+import { AuthService } from '../Auth/auth.service';
 
 @Component({
   selector: 'app-bilan-journalier',
@@ -17,11 +18,18 @@ export class BilanJournalierComponent {
     montant_total: number;
 
     constructor(
-      private servicePaiment: PaiementsService
+      private servicePaiment: PaiementsService,
+      private authService: AuthService,
+      private router: Router
     ){}
 
     ngOnInit(){
       this.montantTotal();
+    }
+
+    public logout(){
+      this.authService.logout();
+      this.router.navigate(['/login']);
     }
 
     montantTotal(){

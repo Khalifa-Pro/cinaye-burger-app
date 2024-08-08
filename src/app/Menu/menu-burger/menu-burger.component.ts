@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { exit } from 'process';
 import { Router } from '@angular/router';
 import { LigneCommande } from '../../Models/LigneCommande';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-menu-burger',
@@ -29,13 +30,36 @@ export class MenuBurgerComponent implements OnInit {
     private burgerService: BurgersService,
     private commandeService: CommandesService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.form = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
       telephone: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       email: ['', [Validators.required, Validators.email]],
+    });
+  }
+
+  /***
+   * toast success
+   */
+  showSuccess()
+  {
+    this.toastr.success(
+      "Votre commande a été envoyée!", "Succès", {
+          positionClass : "toast-top-right",
+    });
+  }
+
+  /***
+   * toast Error
+   */
+  showError()
+  {
+    this.toastr.error(
+      "Votre commande a été échouée!", "Erreur", {
+          positionClass : "toast-top-right",
     });
   }
 
@@ -69,6 +93,9 @@ export class MenuBurgerComponent implements OnInit {
       this.commandeService.commander(commande, this.selectedBurger.id).subscribe(
         response => {
           console.log('Commande envoyée avec succès', response);
+          window.scrollTo(0, 0); // Scroll to top
+          this.onReset();
+          this.router.navigateByUrl("/liste-burger");
         },
         error => {
           console.error('Erreur lors de l\'envoi de la commande', error);

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../Auth/auth.service';
 
 @Component({
   selector: 'app-livraison',
@@ -12,4 +13,13 @@ import { RouterLink } from '@angular/router';
 })
 export class LivraisonComponent {
 
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ){}
+
+  public logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }

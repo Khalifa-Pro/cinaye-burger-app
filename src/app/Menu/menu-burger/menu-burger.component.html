@@ -136,7 +136,7 @@
                           </div>
                           <br>
                           <div class="form-group">
-                            <button data-bs-dismiss="modal" type="submit" class="btn btn-danger"><strong>Valider la commande</strong></button>
+                            <button href="#" (click)="showSuccess();" [disabled]="form.invalid" data-bs-dismiss="modal" type="submit" class="btn btn-danger"><strong>Passer la commande</strong></button>
                             <button
                               style="margin-left: 15px;"
                               type="button"
