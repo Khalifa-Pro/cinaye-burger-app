@@ -70,6 +70,13 @@ export class CommandesService {
     return this.http.get<any>(Urls.NOMBRE_COMMANDES_ANNULEES);
   }
 
+   /***
+   * nombre des commandes annulees
+   */
+   public nombreRecettesJournalieres(){
+    return this.http.get<any>(Urls.NOMBRE_RECETTES_JOURNALIERES);
+  }
+
 
   /***
    * Archiver commande

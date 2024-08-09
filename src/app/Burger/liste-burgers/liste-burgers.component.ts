@@ -11,6 +11,7 @@ import {Subject} from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../Auth/auth.service';
+import { CommandesService } from '../../Services/commandes.service';
 
 @Component({
   selector: 'app-liste-burgers',
@@ -28,16 +29,19 @@ import { AuthService } from '../../Auth/auth.service';
 export class ListeBurgersComponent {
     
     burgers: Burger[];
+    ncc: number;
 
     constructor(
       private serviceBurger: BurgersService,
       private toast: ToastrService,
       private router: Router,
-      private authService: AuthService
+      private authService: AuthService,
+      private serviceCommande: CommandesService
     ) { }
 
     ngOnInit(): void {
       this.listeBurgers();
+      this.nbCommandesEnCours();
     }
 
   showSuccess()
@@ -124,6 +128,19 @@ export class ListeBurgersComponent {
   public logout(){
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  nbCommandesEnCours(){
+    this.serviceCommande.nombreCommandesEnCours()
+    .subscribe({
+      next: (data)=>{
+        this.ncc = data.nombre_commandes_en_cours;
+        console.log("NOMBRE_COMMANDES_EN_COURS: ",this.ncc);
+      },
+      error: (error)=>{
+        
+      }
+    })
   }
 
 }

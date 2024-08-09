@@ -15,6 +15,7 @@ import { LivraisonComponent } from './livraison/livraison.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { RegistreComponent } from './Auth/registre/registre.component';
 import { authGuard } from './Auth/auth.guard';
+import { RecettesJournalieresComponent } from './Commande/recettes-journalieres/recettes-journalieres.component';
 
 export const routes: Routes = [
 
@@ -43,6 +44,7 @@ export const routes: Routes = [
     { path: 'commandes-en-cours', component: CommandesEnCoursComponent, canActivate:[authGuard] },
     { path: 'commandes-validees', component: CommandesValideesComponent, canActivate:[authGuard] },
     { path: 'commandes-annulees', component: CommandesAnnuleesComponent, canActivate:[authGuard] },
+    { path: 'recettes-journalieres', component: RecettesJournalieresComponent, canActivate:[authGuard] },
 
     /***
      * ROUTES PAIEMENTS

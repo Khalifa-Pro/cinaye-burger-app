@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registre',
@@ -15,8 +16,8 @@ import { AuthService } from '../auth.service';
 })
 export class RegistreComponent {
   constructor(
-    private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService
   ){}
 
   /***
@@ -28,6 +29,22 @@ export class RegistreComponent {
     password: new FormControl('', [Validators.required])
   })
 
+  showError()
+  {
+    this.toastr.error(
+      "Echec de création de l'utilisateur", "Erreur", {
+          positionClass : "toast-top-right",
+    });
+  }
+
+  showSuccess()
+  {
+    this.toastr.success(
+      "Utilisateur créé avec succès!", "Succès", {
+          positionClass : "toast-top-right",
+    });
+  }
+
   /***
    * Methode de soummision de'inscription
    */
@@ -37,10 +54,12 @@ export class RegistreComponent {
       this.authService.register(this.signupForm.value)
         .subscribe({
           next: (data: any) => {
+            this.showSuccess();
             console.log(data);
-            this.router.navigate(['/login']);
           },
-          error: (err) => console.log(err)
+          error: (err) => {
+            this.showError();
+          }
         });
     }
   }

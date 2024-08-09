@@ -7,21 +7,27 @@ import { error } from 'console';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../Auth/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-liste-commandes',
   standalone: true,
   imports: [
     RouterLink,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './liste-commandes.component.html',
   styleUrl: './liste-commandes.component.css'
 })
 export class ListeCommandesComponent {
 
-  commandes: Array<LigneCommande>;
+  commandes: Array<LigneCommande> = [];
+  filteredCommandes: Array<LigneCommande> = [];
+  searchTerm: string = '';
+
   isPayed :number = 0;
+  ncc: number;
 
   constructor(
     private serviceCommande: CommandesService,
@@ -37,6 +43,7 @@ export class ListeCommandesComponent {
 
   ngOnInit(): void {
     this.listeCommandes();
+    this.nbCommandesEnCours();
   }
 
   showSuccessPayer()
@@ -67,15 +74,27 @@ export class ListeCommandesComponent {
    * Liiste burgers
    */
   listeCommandes(): void {
-    this.serviceCommande.commandes()
-        .subscribe({
-          next: (data)=>{
-            this.commandes = data;
-          },
-          error: (error)=>{
+    this.serviceCommande.commandes().subscribe({
+      next: (data) => {
+        this.commandes = data;
+        this.filteredCommandes = data;  // Initialize the filtered list
+      },
+      error: (error) => {
+        console.error('Erreur lors du chargement des commandes', error);
+      }
+    });
+  }
 
-          }
-    })
+
+  filterCommandes(): void {
+    this.filteredCommandes = this.commandes.filter((commande) => {
+      const searchStr = this.searchTerm.toLowerCase();
+      return commande.burger_nom.toLowerCase().includes(searchStr) ||
+             commande.nom.toLowerCase().includes(searchStr) ||
+             commande.prenom.toLowerCase().includes(searchStr) ||
+             commande.etat.toLowerCase().includes(searchStr) ||
+             commande.updated_at.toLowerCase().includes(searchStr);
+    });
   }
 
   valider(id:number){
@@ -184,6 +203,19 @@ export class ListeCommandesComponent {
         );
       }
     });
+  }
+
+  nbCommandesEnCours(){
+    this.serviceCommande.nombreCommandesEnCours()
+    .subscribe({
+      next: (data)=>{
+        this.ncc = data.nombre_commandes_en_cours;
+        console.log("NOMBRE_COMMANDES_EN_COURS: ",this.ncc);
+      },
+      error: (error)=>{
+        
+      }
+    })
   }
 
 }

@@ -39,33 +39,26 @@
           <strong class="ml-2">BILAN JOURNALIER</strong></a>
       </li>
     </ul>
-
-    <div class="footer">
-      <p>
-    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-  </p>
-    </div>
 </nav>
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand ml-5" href="#"><h3 style="color: rgb(255, 0, 0); font-family: 'Bodoni MT Black';"><strong>*** CINAYE_BURGER ***</strong></h3></a>
-
+                <a class="navbar-brand ml-5" routerLink="/liste-burgers"><h3 style="color: rgb(255, 0, 0); font-family: 'Bodoni MT Black';"><strong>*** CINAYE_BURGER ***</strong></h3></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
-                    
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
-                        </svg>
-                        Notification(2)
-                        </a>
+                      <button routerLink="/liste-commandes" type="button" class="btn btn-primary position-relative">
+                        Commandes
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                          {{ncc}}
+                          <span class="visually-hidden"></span>
+                        </span>
+                      </button>
                     </li>
                     <li class="nav-item active">
-                      <button class="btn btn-outline-danger" (click)="logout()">
+                      <button type="button" class="btn btn-outline-danger ml-4" (click)="logout()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
                             <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>

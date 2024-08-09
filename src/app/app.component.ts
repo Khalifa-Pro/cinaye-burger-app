@@ -9,6 +9,7 @@ import { ListeCommandesComponent } from './Commande/liste-commandes/liste-comman
 import { LoginComponent } from './Auth/login/login.component';
 import { RegistreComponent } from './Auth/registre/registre.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
+import { RecettesJournalieresComponent } from './Commande/recettes-journalieres/recettes-journalieres.component';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,8 @@ import { StatistiqueComponent } from './statistique/statistique.component';
     ListeCommandesComponent,
     LoginComponent,
     RegistreComponent,
-    StatistiqueComponent
+    StatistiqueComponent,
+    RecettesJournalieresComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

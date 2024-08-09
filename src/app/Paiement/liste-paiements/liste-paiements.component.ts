@@ -5,6 +5,7 @@ import { Paiement } from '../../Models/Paiement';
 import { PaiementsService } from '../../Services/paiements.service';
 import { error } from 'console';
 import { AuthService } from '../../Auth/auth.service';
+import { CommandesService } from '../../Services/commandes.service';
 
 @Component({
   selector: 'app-liste-paiements',
@@ -19,16 +20,19 @@ import { AuthService } from '../../Auth/auth.service';
 export class ListePaiementsComponent {
 
   paiements: Array<Paiement>;
+  ncc: number;
 
   constructor(
     private servicePaiement: PaiementsService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private serviceCommande: CommandesService
   ) { }
   
 
   ngOnInit(): void {
     this.listePaiements();
+    this.nbCommandesEnCours();
   }
 
   public logout(){
@@ -48,6 +52,19 @@ export class ListePaiementsComponent {
           error: (error)=>{
 
           }
+    })
+  }
+
+  nbCommandesEnCours(){
+    this.serviceCommande.nombreCommandesEnCours()
+    .subscribe({
+      next: (data)=>{
+        this.ncc = data.nombre_commandes_en_cours;
+        console.log("NOMBRE_COMMANDES_EN_COURS: ",this.ncc);
+      },
+      error: (error)=>{
+        
+      }
     })
   }
 

@@ -30,6 +30,7 @@ export class Urls{
     static NOMBRE_COMMANDES_EN_COURS = Urls.BASE_URL + "/nombre-commandes-en-cours";
     static NOMBRE_COMMANDES_VALIDEES = Urls.BASE_URL + "/nombre-commandes-validees";
     static NOMBRE_COMMANDES_ANNULEES = Urls.BASE_URL + "/nombre-commandes-annulees";
+    static NOMBRE_RECETTES_JOURNALIERES = Urls.BASE_URL + "/nombre-recettes-journalieres";
 
     // PAIEMENT APIs
     static PAYER_COMMANDE = Urls.BASE_URL + "/payer/";

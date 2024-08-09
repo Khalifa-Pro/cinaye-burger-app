@@ -47,21 +47,22 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand ml-5" href="#"><h3 style="color: rgb(255, 0, 0); font-family: 'Bodoni MT Black';"><strong>*** CINAYE_BURGER ***</strong></h3></a>
+                <a class="navbar-brand ml-5" routerLink="/liste-burgers"><h3 style="color: rgb(255, 0, 0); font-family: 'Bodoni MT Black';"><strong>*** CINAYE_BURGER ***</strong></h3></a>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
                     
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
-                        </svg>
-                        Notification(2)
-                        </a>
+                      <button routerLink="/liste-commandes" type="button" class="btn btn-primary position-relative">
+                        Commandes
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                          {{ncc}}
+                          <span class="visually-hidden"></span>
+                        </span>
+                      </button>
                     </li>
                     <li class="nav-item active">
-                      <button class="btn btn-outline-danger" (click)="logout()">
+                      <button class="btn btn-outline-danger ml-4" (click)="logout()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
                             <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
@@ -79,8 +80,8 @@
                <div class="container">
                 <br><br>
                 <div class="row">
-                  <div class="col-sm-4">
-                    <a routerLink="/commandes-en-cours" type="button" style="width: 250px;
+                  <div class="col-sm-3">
+                    <a routerLink="/commandes-en-cours" type="button" style="width: 170px;
                       height: 250px;background-color: orange;
                       padding: 20px; border-radius: 25px; 
                       text-align: center;">
@@ -95,8 +96,9 @@
                       </svg>
                     </a>
                   </div>
-                  <div class="col-sm-4">
-                    <a routerLink="/commandes-validees" type="button" style="width: 250px; height: 250px;
+                  <div class="col-sm-3">
+                    <a routerLink="/commandes-validees" type="button" style="width: 170px; 
+                      height: 250px;
                       background-color: rgb(48, 239, 48); 
                       padding: 20px; border-radius: 25px;
                       text-align: center;
@@ -112,8 +114,27 @@
                       </svg>
                     </a>
                   </div>
-                  <div class="col-sm-4">
-                    <a routerLink="/commandes-annulees" type="button" style="width: 250px; height: 250px;
+                  <div class="col-sm-3">
+                    <a routerLink="/recettes-journalieres" type="button" style="width: 170px;
+                      height: 250px;
+                      background-color: rgb(107, 6, 230); 
+                      padding: 20px; border-radius: 25px;
+                      text-align: center;
+                      ">
+                      <strong style="font-size: 50px; color: white;">{{nrj}}</strong>
+                      <br>
+                      <strong style="text-align: center; color: white;">RECETTES JOURNALIERES</strong>
+                      <br>
+                      <br>
+                      <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="70" height="70" fill="currentColor" class="bi bi-clipboard-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
+                        <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5zm4 5.982c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018"/>
+                      </svg>
+                    </a>
+                  </div>
+                  <div class="col-sm-3">
+                    <a routerLink="/commandes-annulees" type="button" style="width: 170px;
+                      height: 250px;
                       background-color: rgb(255, 4, 4); 
                       padding: 20px; border-radius: 25px;
                       text-align: center;

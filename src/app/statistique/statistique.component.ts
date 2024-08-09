@@ -19,11 +19,13 @@ export class StatistiqueComponent {
     ncc: number;
     ncv: number;
     nca: number;
+    nrj: number;
 
     ngOnInit(){
       this.nbCommandesEnCours();
       this.nbCommandesValidess();
       this.nbCommandesAnnulees();
+      this.nbRecettesJournalieres();
     }
 
     constructor(
@@ -69,6 +71,19 @@ export class StatistiqueComponent {
         next: (data)=>{
           this.nca = data.nombre_commandes_annulees;
           console.log("NOMBRE_COMMANDES_ANNULEES: ",this.nca);
+        },
+        error: (error)=>{
+          
+        }
+      })
+    }
+
+    nbRecettesJournalieres(){
+      this.serviceCommande.nombreRecettesJournalieres()
+      .subscribe({
+        next: (data)=>{
+          this.nrj = data.nombre_recettes_jounalieres;
+          console.log("NOMBRE_RECETTES_JOURNALIERES: ",this.nrj);
         },
         error: (error)=>{
           
